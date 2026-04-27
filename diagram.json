@@ -1,7 +1,24 @@
 {
   "version": 1,
-  "author": "Uri Shaked",
+  "author": "Guilherme Bispo",
   "editor": "wokwi",
-  "parts": [ { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} } ],
-  "connections": [ [ "esp:TX", "$serialMonitor:RX", "", [] ], [ "esp:RX", "$serialMonitor:TX", "", [] ] ]
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0 },
+    { "type": "wokwi-led", "id": "led1", "top": -80, "left": 200, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led2", "top": 0, "left": 200, "attrs": { "color": "blue" } },
+    { "type": "wokwi-led", "id": "led3", "top": 80, "left": 200, "attrs": { "color": "red" } },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 150, "left": 180 }
+  ],
+  "connections": [
+    [ "esp:12", "led1:A", "green", [ "v0" ] ],
+    [ "esp:GND.1", "led1:C", "black", [ "v0" ] ],
+    [ "esp:13", "led2:A", "green", [ "v0" ] ],
+    [ "esp:GND.1", "led2:C", "black", [ "v0" ] ],
+    [ "esp:14", "led3:A", "green", [ "v0" ] ],
+    [ "esp:GND.1", "led3:C", "black", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
 }
