@@ -1,7 +1,7 @@
 import time
 from machine import Pin
 import dht
-
+print("Teste")
 print("Iniciando Termostato Inteligente com ESP32...")
 
 # LEDs conectados nos pinos do ESP32
