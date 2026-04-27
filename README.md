@@ -1,5 +1,3 @@
-# 📝 Relatório do Candidato
-
 ## 👤 Identificação do Candidato
 
 **Nome completo:** Guilherme Silva 
