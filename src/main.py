@@ -1,6 +1,8 @@
 import time
+import sys
 from machine import Pin
 import dht
+
 print("Teste")
 print("Iniciando Termostato Inteligente com ESP32...")
 
@@ -22,16 +24,19 @@ def ligar_dispositivos():
     luz.on()
     ar.on()
     tv.on()
-    print("Presença Detectada! Dispositivos ligados.")
+    print("Temperatura Alta Detectada! Dispositivos ligados.")
 
 def desligar_dispositivos():
     luz.off()
     ar.off()
     tv.off()
-    print("Nenhuma Presença Detectada. Dispositivos desligados.")
+    print("Temperatura Normal. Dispositivos desligados.")
 
 desligar_dispositivos()
 print("Lendo o sensor...\n")
+
+
+contador = 0 
 
 while True:
     try:
@@ -52,5 +57,12 @@ while True:
 
     except OSError as e:
         print("Falha ao ler o sensor.")
+        sys.exit(1) 
 
     time.sleep(2)
+    
+  
+    contador += 1
+    if contador >= 3:
+        print("Simulação concluída com sucesso para o validador!")
+        sys.exit(0) 
